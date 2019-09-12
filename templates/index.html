@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Home $BlogProj</title>
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron" align="center">
+            <h1>Welcome to the Blog Project Home Page</h1>
+            <small>Nice having you on board</small>
+        </div>
+        <div align="center">
+            <img src="{% static 'images/blog.jpg' %}" width=65% alt="BlogPic" class="rounded-pill">
+        </div>
+    </div>
+{% endblock content %}

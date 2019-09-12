@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>Post $ Blog</title>
+{% endblock title %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="container">
+            <div class="jumbotron" align="center">
+                {% if form.instance.pk %}
+                    <h1>Edit Post</h1>
+                {% else %}
+                    <h1>Create Post</h1>
+                {% endif %}
+            </div>
+            <form method="POST">
+            {% csrf_token %}
+                <div class="loader">{{ form.as_p }}</div>
+                <input type="submit" value="Save" class="btn btn-primary btn-block"><br>
+            </form>
+        </div>
+    {% else %}
+        <div class="container">
+            <div class="jumbotron" align="center">
+                <h1>Access Denied</h1>
+            </div>
+        </div>
+    {% endif %}
+
+    <!--Medium editor script -->
+    <script>var editor = new MediumEditor('.editable');</script>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>Post $ Blog</title>
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron" align="center">
+            <h1>Add your comment to {{post.title}}</h1>
+        </div>
+        <form method="POST">
+        {% csrf_token %}
+            <div class="loader">{{ form.as_p }}</div>
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+    </div>
+
+    <!--Medium editor script -->
+    <script>var editor = new MediumEditor('.editable');</script>
+{% endblock content %}

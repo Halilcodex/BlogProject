@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>Login $ BProj</title>
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class='jumbotron'>
+            <h3 class="text-center">Log in to your account</h3>
+
+            {% if next %}
+                {% if user.is_authenticated %}
+                    <h4>Your account doesn't have access to this page. Contact your admin</h4>
+                {% else %}
+                    <h4>Please Login to get accesss</h4>
+                {% endif %}
+            {% endif %}
+        </div>
+
+        <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" class="btn btn-primary btn-block" value="Login">
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+    </div>
+{% endblock content %}
